@@ -2,16 +2,26 @@ const express= require("express")
 
 const app= express()
 
+const listViewRouter = require('./list-view-router');
+const listEditRouter = require('./list-edit-router');
+
+app.use(express.json());
+
+
+app.use('/list-view', listViewRouter);
+app.use('/list-edit', listEditRouter);
+
+
 const tasks = [
     {
-      id: '123456',
+      id: '1',
       isCompleted: false,
-      description: 'Walk the dog',
+      description: 'repaso',
     },
     {
-      id: '789012',
+      id: '2',
       isCompleted: true,
-      description: 'Buy groceries',
+      description: 'Realizar laboratorios',
     },
   ];
   
