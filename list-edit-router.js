@@ -15,6 +15,18 @@ const tasks = [
 ];
 
 
+listEditRouter.delete('/delete/:id', (req, res) => {
+    const taskId = req.params.id;
+    const index = tasks.findIndex((task) => task.id === taskId);
+    if (index !== -1) {
+      tasks.splice(index, 1);
+      res.send('Tarea eliminada');
+    } else {
+      res.status(404).send('Tarea no encontrada');
+    }
+  });
+  
+
 listEditRouter.post('/create', (req, res) => {
   const newTask = req.body; 
   tasks.push(newTask);

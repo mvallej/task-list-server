@@ -14,6 +14,7 @@ const tasks = [
       },
 ];
 
+
 listViewRouter.get('/completed', (req, res) => {
   const completedTasks = tasks.filter((task) => task.isCompleted);
   res.json(completedTasks);
