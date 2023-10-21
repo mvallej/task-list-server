@@ -4,14 +4,14 @@ const app= express()
 
 const tasks = [
     {
-      id: '123456',
+      id: '1',
       isCompleted: false,
-      description: 'Walk the dog',
+      description: 'Practicar y repasar modulos Adda',
     },
     {
-      id: '789012',
+      id: '2',
       isCompleted: true,
-      description: 'Buy groceries',
+      description: 'Realizar tareas y laboratorios',
     },
   ];
   
