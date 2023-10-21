@@ -1,6 +1,9 @@
-const express= require("express")
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const app= express()
+const { validateRequestMethod } = require('./middlewares'); 
+
 
 const listViewRouter = require('./list-view-router');
 const listEditRouter = require('./list-edit-router');
@@ -8,27 +11,19 @@ const listEditRouter = require('./list-edit-router');
 app.use(express.json());
 
 
+app.use((req, res, next) => {
+  validateRequestMethod(req, res, next);
+});
+
+
 app.use('/list-view', listViewRouter);
 app.use('/list-edit', listEditRouter);
 
 
-const tasks = [
-    {
-      id: '1',
-      isCompleted: false,
-      description: 'repaso',
-    },
-    {
-      id: '2',
-      isCompleted: true,
-      description: 'Realizar laboratorios',
-    },
-  ];
-  
-  app.get("/", (req, res) => {
-    res.json(tasks);
-  });
-  
-  app.listen(3000, () => {
-    console.log("server listen on port",3000);
-  });
+app.get('/tasks', (req, res) => {
+  res.json(tasks);
+});
+
+app.listen(port, () => {
+  console.log(`Servidor en ejecución en http://localhost:${port}`);
+});
